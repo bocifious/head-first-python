@@ -1,8 +1,6 @@
 #Function to search for vowels within a supplied word
-def search_for_vowels(word):
+#the ':str) -> set' is the annotation for the function
+def search_for_vowels(phrase:str) -> set:
     #this is the vowel search code from chapter 3
     vowels = set('aeiou')
-    found = vowels.intersection(set(word))
-    #i'm not sure why they include this for loop instead of printing found
-    for vowel in found:
-        print(vowel)
+    return vowels.intersection(set(phrase))
