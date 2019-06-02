@@ -16,7 +16,7 @@ def hello() -> str:
 
 # add new route for search4 and then function to search
 # for set within phrase by using imported module search4letters
-@app.route('/search4')
+@app.route('/search4', methods=['POST'])
 def do_search() -> str:
     return str(search4letters('life, the universe, and everything', 'eiru,!'))
 
