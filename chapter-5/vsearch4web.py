@@ -1,8 +1,8 @@
 # production program for web search app
 
-# import Flask class from the flask module
+# import Flask, render_template, and request classes from the flask module
 # import search4letters class from the vsearch module (chapter 4)
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from vsearch import search4letters
 
 # create an object type of Flask assigning it to app variable
@@ -18,7 +18,9 @@ def hello() -> str:
 # for set within phrase by using imported module search4letters
 @app.route('/search4', methods=['POST'])
 def do_search() -> str:
-    return str(search4letters('life, the universe, and everything', 'eiru,!'))
+    phrase = request.form['phrase']
+    letters = request.form['letters']
+    return str(search4letters(phrase, letters))
 
 
 # function to return rendered HTML
