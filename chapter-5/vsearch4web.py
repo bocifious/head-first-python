@@ -30,4 +30,4 @@ def entry_page() -> 'html':
 
 
 # used to run the webapp 'app' in the web server
-app.run()
+app.run(debug=True)
