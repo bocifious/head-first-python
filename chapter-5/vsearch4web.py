@@ -23,7 +23,9 @@ def do_search() -> 'html':
     title = 'Here are your results: '
     results = str(search4letters(phrase, letters))
     return render_template(
-        'results.html', the_phrase=phrase, the_letters=letters, the_title=title, the_results=results,
+        'results.html', the_phrase=phrase,
+        the_letters=letters, the_title=title,
+        the_results=results
     )
 
 
