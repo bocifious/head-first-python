@@ -33,4 +33,5 @@ def entry_page() -> 'html':
 
 
 # used to run the webapp 'app' in the web server
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
