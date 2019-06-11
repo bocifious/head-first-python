@@ -8,6 +8,11 @@ from vsearch import search4letters
 # create an object type of Flask assigning it to app variable
 app = Flask(__name__)
 
+def log_request(req: 'flask_request', res: str) -> None:
+    """function to log results of search4letters function"""
+    with open('vsearch.log', 'a') as log:
+        print(req, res, file=log)
+
 # add new route for search4 and then function to search
 # for set within phrase by using imported module search4letters
 @app.route('/search4', methods=['POST'])
@@ -16,6 +21,7 @@ def do_search() -> 'html':
     letters = request.form['letters']
     title = 'Here are your results: '
     results = str(search4letters(phrase, letters))
+    log_request(request, results)
     return render_template(
         'results.html', the_phrase=phrase,
         the_letters=letters, the_title=title,
