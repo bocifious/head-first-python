@@ -2,7 +2,7 @@
 
 # import Flask, render_template, and request classes from the flask module
 # import search4letters class from the vsearch module (chapter 4)
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, escape
 from vsearch import search4letters
 
 # create an object type of Flask assigning it to app variable
@@ -42,7 +42,7 @@ def entry_page() -> 'html':
 def view_the_log() -> str:
     with open('vsearch.log') as log:
         contents = log.read()
-    return contents
+    return escape(contents)
 
 # used to run the webapp 'app' in the web server
 if __name__ == '__main__':
