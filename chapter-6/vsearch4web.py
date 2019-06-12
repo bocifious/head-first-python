@@ -11,10 +11,7 @@ app = Flask(__name__)
 def log_request(req: 'flask_request', res: str) -> None:
     """function to log results of search4letters function"""
     with open('vsearch.log', 'a') as log:
-        print(req.form, file=log, end='|')
-        print(req.remote_addr, file=log, end='|')
-        print(req.user_agent, file=log, end='|')
-        print(res, file=log, end='|')
+        print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
 
 # add new route for search4 and then function to search
 # for set within phrase by using imported module search4letters
