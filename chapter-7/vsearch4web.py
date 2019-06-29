@@ -4,18 +4,18 @@
 # import search4letters class from the vsearch module (chapter 4)
 from flask import Flask, render_template, request, escape
 from vsearch import search4letters
+import mysql.connector
 
 # create an object type of Flask assigning it to app variable
 app = Flask(__name__)
 
-
+#function to log requests to mysql database
 def log_request(req: 'flask_request', res: str) -> None:
     """function to log results of search4letters function"""
     dbconfig = {'host': '127.0.0.1',
                 'user': 'vsearch',
                 'password': 'vsearchpasswd',
                 'database': 'vsearchlogDB', }
-    import mysql.connector
     conn = mysql.connector.connect(**dbconfig)
     cursor = conn.cursor()
     _SQL = """insert into log
